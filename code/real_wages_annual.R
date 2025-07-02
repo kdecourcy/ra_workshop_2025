@@ -24,7 +24,7 @@ cpi_base <- cpi$cpi[cpi$year == "2024"]
 
 # import ORG data for sample size
 raw_org <- load_org(cps_years, org_vars) %>% 
-  filter(selfinc!=1 | is.na(selfinc), selfemp!=1, emp==1, !is.na(wage)) %>%
+  filter(selfinc!=1 | is.na(selfinc), selfemp!=1, emp==1, !is.na(wage), age >= 16) %>%
   # merge CPI-U-RS data
   left_join(cpi, by='year') %>% 
   # inflation adjust wages to $2024
